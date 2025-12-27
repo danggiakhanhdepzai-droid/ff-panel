@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Free Fire Panel</title>
+
+<style>
+:root{
+  --bg1:#020617;
+  --bg2:#0b1220;
+  --glass:rgba(255,255,255,.08);
+  --border:rgba(255,255,255,.12);
+  --blue:#38bdf8;
+  --green:#22c55e;
+  --red:#ef4444;
+}
+
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+
+body{
+  margin:0;
+  height:100vh;
+  background:
+    radial-gradient(120% 60% at 50% -10%, #1e293b, transparent 60%),
+    linear-gradient(180deg,var(--bg1),var(--bg2));
+  font-family:-apple-system,BlinkMacSystemFont;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.panel{
+  width:100%;
+  height:100%;
+  padding:20px;
+  background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));
+  animation:enter .5s ease;
+}
+
+/* HEADER */
+.header{
+  text-align:center;
+  margin-bottom:16px;
+}
+.logo{
+  width:72px;
+  height:72px;
+  border-radius:18px;
+  margin-bottom:6px;
+}
+.header h1{
+  margin:6px 0 2px;
+  font-size:22px;
+  letter-spacing:.5px;
+}
+.sub{
+  font-size:12px;
+  color:var(--blue);
+}
+
+/* TABS */
+.tabs{
+  display:flex;
+  gap:8px;
+  margin:16px 0;
+}
+.tab{
+  flex:1;
+  padding:10px 0;
+  border-radius:14px;
+  background:var(--glass);
+  border:1px solid var(--border);
+  color:#94a3b8;
+  font-weight:600;
+}
+.tab.active{
+  background:linear-gradient(135deg,#38bdf8,#2563eb);
+  color:#fff;
+  box-shadow:0 8px 24px rgba(56,189,248,.4);
+}
+
+/* CONTENT */
+.content{display:none}
+.content.active{display:block}
+
+/* ITEM */
+.item{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 16px;
+  margin-bottom:12px;
+  border-radius:18px;
+  background:var(--glass);
+  border:1px solid var(--border);
+}
+
+/* SWITCH */
+.switch{
+  position:relative;
+  width:52px;
+  height:30px;
+  background:#1e293b;
+  border-radius:999px;
+  transition:.2s;
+}
+.switch::after{
+  content:"";
+  position:absolute;
+  top:3px;
+  left:3px;
+  width:24px;
+  height:24px;
+  background:#fff;
+  border-radius:50%;
+  transition:.2s;
+}
+.switch.on{
+  background:var(--green);
+  box-shadow:0 0 14px rgba(34,197,94,.6);
+}
+.switch.on::after{
+  transform:translateX(22px);
+}
+
+/* DANGER */
+.item.danger .switch.on{
+  background:var(--red);
+  box-shadow:0 0 14px rgba(239,68,68,.6);
+}
+
+/* ANIM */
+@keyframes enter{
+  from{opacity:0;transform:translateY(24px)}
+  to{opacity:1;transform:none}
+}
+</style>
+</head>
+
+<body>
+<div class="panel">
+
+  <!-- HEADER -->
+  <div class="header">
+    <img src="logo.png" class="logo" alt="logo">
+    <h1>FREE FIRE PANEL</h1>
+    <div class="sub">VIP iPA</div>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab active" onclick="showTab(event,'combat')">Combat</button>
+    <button class="tab" onclick="showTab(event,'visual')">Visual</button>
+    <button class="tab" onclick="showTab(event,'misc')">Misc</button>
+  </div>
+
+  <!-- COMBAT -->
+  <div class="content active" id="combat">
+    <div class="item"><span>Aimlock</span><div class="switch" onclick="toggle(this)"></div></div>
+    <div class="item"><span>Aimbot</span><div class="switch" onclick="toggle(this)"></div></div>
+    <div class="item"><span>No Recoil</span><div class="switch" onclick="toggle(this)"></div></div>
+    <div class="item"><span>Aim Head</span><div class="switch" onclick="toggle(this)"></div></div>
+  </div>
+
+  <!-- VISUAL -->
+  <div class="content" id="visual">
+    <div class="item"><span>Wallhack</span><div class="switch" onclick="toggle(this)"></div></div>
+    <div class="item"><span>ESP Line</span><div class="switch" onclick="toggle(this)"></div></div>
+    <div class="item"><span>ESP Box</span><div class="switch" onclick="toggle(this)"></div></div>
+  </div>
+
+  <!-- MISC -->
+  <div class="content" id="misc">
+    <div class="item"><span>Speed</span><div class="switch" onclick="toggle(this)"></div></div>
+    <div class="item"><span>No Lag</span><div class="switch" onclick="toggle(this)"></div></div>
+    <div class="item danger"><span>Clear Cache</span><div class="switch" onclick="toggle(this)"></div></div>
+  </div>
+
+</div>
+
+<script>
+function toggle(el){
+  el.classList.toggle("on");
+}
+
+function showTab(e,id){
+  document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+  document.querySelectorAll(".content").forEach(c=>c.classList.remove("active"));
+  e.target.classList.add("active");
+  document.getElementById(id).classList.add("active");
+}
+</script>
+</body>
+</html>
