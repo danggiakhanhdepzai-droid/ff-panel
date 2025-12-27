@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+"http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+
+  <!-- Tên hiển thị app -->
+  <key>CFBundleDisplayName</key>
+  <string>FF Panel</string>
+
+  <!-- Ẩn status bar tuyệt đối -->
+  <key>UIStatusBarHidden</key>
+  <true/>
+
+  <!-- Ép full screen, không split view -->
+  <key>UIRequiresFullScreen</key>
+  <true/>
+
+  <!-- Khóa xoay màn hình (đứng) -->
+  <key>UISupportedInterfaceOrientations</key>
+  <array>
+    <string>UIInterfaceOrientationPortrait</string>
+  </array>
+
+  <!-- Cho phép load file local + web -->
+  <key>NSAppTransportSecurity</key>
+  <dict>
+    <key>NSAllowsArbitraryLoads</key>
+    <true/>
+    <key>NSAllowsLocalNetworking</key>
+    <true/>
+  </dict>
+
+  <!-- Tắt thanh cuộn WebView mặc định -->
+  <key>UIViewControllerBasedStatusBarAppearance</key>
+  <false/>
+
+  <!-- Không dùng storyboard -->
+  <key>UILaunchStoryboardName</key>
+  <string></string>
+
+</dict>
+</plist>
